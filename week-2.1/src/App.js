@@ -14,7 +14,9 @@ import React, { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const cardValues = [101, 115, 135, 143];
+  const [pickedValue, setPickedValue] = useState(null);
+  // console.log(pickedValue);
+  const cardValues = [10, 25, 46, 103];
 
   const handleIncrement = (num) => {
     setCount((count) => count + num);
@@ -41,36 +43,62 @@ function App() {
         </button>
         <button onClick={handleReset}>Reset</button>
       </div>
-      <IsOddEven count={count} />
-      <RandomCard cardValues={cardValues} />
+      <IsOddEven count={count} pickedValue={pickedValue} />
+      <RandomCard cardValues={cardValues} setPickedValue={setPickedValue} />
     </>
   );
 }
 
 // Odd or Even
 const IsOddEven = (props) => {
-  const { count } = props;
+  const { count, pickedValue } = props;
 
-  return <h2>Number is {count % 2 === 0 ? "Even" : "Odd"}</h2>;
+  return (
+    <div>
+      {<h2>Number is {count % 2 === 0 ? "Even" : "Odd"}</h2>};
+      {
+        <h2>
+          Number is {pickedValue && pickedValue % 2 === 0 ? "Even" : "Odd"}
+        </h2>
+      }
+      ;
+    </div>
+  );
 };
 
 // Random Card
 
 const RandomCard = (props) => {
-  const { cardValues } = props;
+  const { cardValues, setPickedValue } = props;
 
   return (
-    <>
+    <div>
       <h1>
         {cardValues.map((cardValue, index) => {
           return (
-            <div key={index}>
+            <div
+              key={index}
+              style={{
+                display: "inline-block",
+                width: "150px",
+                height: "150px",
+                backgroundColor: "palevioletred",
+                color: "#fff",
+                lineHeight: "90px",
+                fontWeight: "bolder",
+                fontSize: "30px",
+                marginRight: 10,
+                textAlign: "center",
+                borderRadius: "100%",
+              }}
+              onClick={() => setPickedValue(cardValue)}
+            >
               <h3>{cardValue}</h3>
             </div>
           );
         })}
       </h1>
-    </>
+    </div>
   );
 };
 export default App;
