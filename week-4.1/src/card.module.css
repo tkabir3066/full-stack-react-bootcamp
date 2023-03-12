@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.cardNum {
+  display: inline-block;
+  background-color: orange;
+  text-align: center;
+
+  padding: 3rem;
+  border-radius: 100%;
+}
