@@ -6,13 +6,14 @@ import React, { Component } from "react";
 import Card from "./CardClass";
 
 import OddOrEven from "./OddOrEvenClass";
-class App extends Component {
+class AppClass extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       count: 0,
       cardNumbers: [10, 25, 45, 74, 88],
+      pickedValue: null,
     };
   }
 
@@ -33,10 +34,12 @@ class App extends Component {
   };
 
   pickedCardParent = (cardNum) => {
-    console.log(cardNum);
+    this.setState({
+      pickedValue: cardNum,
+    });
   };
   render() {
-    const { count, cardNumbers } = this.state;
+    const { count, cardNumbers, pickedValue } = this.state;
     return (
       <div>
         <h1>Count: {count}</h1>
@@ -44,14 +47,17 @@ class App extends Component {
         <button onClick={this.handleDecrement}>Decrement</button>
         <button onClick={this.handleReset}>Reset</button>
 
-        <OddOrEven count={count} />
-        <Card
-          cardNumbers={cardNumbers}
-          pickedCardParent={this.pickedCardParent}
-        />
+        <OddOrEven count={count} pickedValue={pickedValue} />
+        {cardNumbers.map((cardNum, index) => (
+          <Card
+            key={index}
+            cardNum={cardNum}
+            pickedCardParent={this.pickedCardParent}
+          />
+        ))}
       </div>
     );
   }
 }
 
-export default App;
+export default AppClass;

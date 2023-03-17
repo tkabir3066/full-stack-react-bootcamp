@@ -5,21 +5,9 @@ class Card extends Component {
     this.props.pickedCardParent(this.props.cardNum);
   };
   render() {
-    const { cardNumbers } = this.props;
-
     return (
-      <div>
-        {cardNumbers.map((cardNum, index) => {
-          return (
-            <p
-              className={style.cardNum}
-              key={index}
-              onClick={this.pickedCardNumber}
-            >
-              {cardNum}
-            </p>
-          );
-        })}
+      <div className={style.cardNum} onClick={this.pickedCardNumber}>
+        {this.props.cardNum}
       </div>
     );
   }
