@@ -1,7 +1,11 @@
-import React, { Component } from "react";
-import Card from "./Card";
+// class based component
+// comparing class based component with functional component
+// image import (card)
 
-import OddOrEven from "./OddOrEven";
+import React, { Component } from "react";
+import Card from "./CardClass";
+
+import OddOrEven from "./OddOrEvenClass";
 class App extends Component {
   constructor(props) {
     super(props);
