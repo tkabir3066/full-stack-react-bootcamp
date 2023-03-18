@@ -23,7 +23,7 @@ class AppClass extends Component {
 
   componentDidMount() {
     // API request
-    // side effects (accessing DOM , Subscriptions)
+    // side effects (accessing DOM , Subscriptions) // ekhane directly DOM ke touch korte hocche
     console.log("AppClass: componentDidMount");
   }
 
