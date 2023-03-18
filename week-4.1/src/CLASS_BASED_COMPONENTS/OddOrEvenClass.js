@@ -9,10 +9,17 @@ class OddOrEven extends Component {
         <h3>Counter : {counter}</h3>
         <p>
           Card Number :{" "}
-          {pickedValue && (
+          {/* {pickedValue && (
             <span className={pickedValue % 2 === 0 ? style.even : style.odd}>
               {counter}
             </span>
+          )} */}
+          {pickedValue ? (
+            <p className={pickedValue % 2 === 0 ? style.even : style.odd}>
+              {counter}
+            </p>
+          ) : (
+            <p>You haven't picked a number yet</p>
           )}
         </p>
       </div>

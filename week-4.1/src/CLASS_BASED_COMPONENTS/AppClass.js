@@ -3,9 +3,28 @@
 // image import (card)
 
 import React, { Component } from "react";
+import BdCard from "./BdCard";
 import Card from "./CardClass";
-
 import OddOrEven from "./OddOrEvenClass";
+
+const bdCards = [
+  {
+    img: "./logo192.png",
+    title: "Sample title 1",
+    description: "Description 1",
+  },
+  {
+    img: "./logo192.png",
+    title: "Sample title 1",
+    description: "Description 1",
+  },
+  {
+    img: "./logo192.png",
+    title: "Sample title 1",
+    description: "Description 1",
+  },
+];
+
 class AppClass extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +73,10 @@ class AppClass extends Component {
             cardNum={cardNum}
             pickedCardParent={this.pickedCardParent}
           />
+        ))}
+
+        {bdCards.map((card, index) => (
+          <BdCard key={index} card={card} />
         ))}
       </div>
     );
