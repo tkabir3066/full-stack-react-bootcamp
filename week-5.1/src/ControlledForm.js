@@ -1,11 +1,15 @@
-
 import React, { useState } from "react";
 
 const ControlledForm = () => {
-  const [userData, setUserData] = useState({ firstName: " " });
-
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profession: "",
+    gender: "",
+  });
+  const { firstName, lastName, email, profession, gender } = userData;
   const handleChange = (e) => {
-    console.log(e.target.value);
     setUserData({
       //   firstName: e.target.value,
       //   lastName: e.target.value,
@@ -14,10 +18,13 @@ const ControlledForm = () => {
     });
   };
 
-  const { firstName, lastName, email, password } = userData;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(userData);
+  };
   return (
     <div style={{ width: 600, margin: "0 auto" }}>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="firstName">FirstName: </label>
           <input
@@ -54,16 +61,59 @@ const ControlledForm = () => {
         </div>
 
         <br />
+
         <div>
-          <label htmlFor="password">Password: </label>
+          <label htmlFor="gender">Gender:</label>
           <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
+            type="radio"
+            name="gender"
+            id="gender"
+            checked={gender === "male"}
+            value="male"
             onChange={handleChange}
           />
+          Male
+          <input
+            type="radio"
+            name="gender"
+            id="gender"
+            checked={gender === "female"}
+            value="female"
+            onChange={handleChange}
+          />
+          Female
+          <input
+            type="radio"
+            name="gender"
+            id="gender"
+            value="other"
+            checked={gender === "other"}
+            onChange={handleChange}
+          />
+          Other
         </div>
+
+        <br />
+        <div>
+          <label htmlFor="profession">Profession:</label>
+
+          <select
+            name="profession"
+            value={profession}
+            id="profession"
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Select Option
+            </option>
+            <option value="webDeveloper">Web Developer</option>
+            <option value="softwareDeveloper">Software Developer</option>
+            <option value="dataScientist">Data Scientist</option>
+            <option value="digitalMarketer">Digital Marketer</option>
+          </select>
+        </div>
+
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
